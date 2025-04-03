@@ -1,78 +1,61 @@
-import React from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable, Image } from "react-native";
+import { useRouter } from "expo-router";
 
-const MyComponent = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Esta é a tela Sobre!</Text>
+export default function Screen() {
+    const router = useRouter();
 
-      <View style={styles.buttonContainer}>
-        <Pressable
-          onPress={() => console.log("/login")}
-          style={({ pressed }) => [
-            styles.button,
-            pressed && styles.buttonPressed,
-          ]}
-        >
-          <Text style={styles.buttonText}>Ir para Login</Text>
-        </Pressable>
-
-        <Pressable
-          onPress={() => console.log("/termos")}
-          style={({ pressed }) => [
-            styles.button,
-            pressed && styles.buttonPressed,
-          ]}
-        >
-          <Text style={styles.buttonText}>Ir para Termos</Text>
-        </Pressable>
-
-        <Pressable
-          onPress={() => console.log("/sobre")}
-          style={({ pressed }) => [
-            styles.button,
-            pressed && styles.buttonPressed,
-          ]}
-        >
-          <Text style={styles.buttonText}>Ir para Sobre</Text>
-        </Pressable>
-      </View>
-    </View>
-  );
-};
+    return (
+        <View style={styles.container}>
+            
+            <Text style={styles.welcomeText}>Bem-vindo ao Nosso App!</Text>
+            <Image 
+                source={{ uri: "https://assetsio.gnwcdn.com/eurogamer-zjp1vx.jpg?width=1200&height=630&fit=crop&enable=upscale&auto=webp" }} 
+                style={{ width: 400, height: 300 }} 
+            />
+            <View style={styles.buttonContainer}>
+                <Pressable style={styles.button} onPress={() => router.push("/terms")}>
+                    <Text style={styles.buttonText}>Termos</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={() => router.push("/login")}>
+                    <Text style={styles.buttonText}>Login</Text>
+                </Pressable>
+                <Pressable style={styles.button} onPress={() => router.push("/sobre")}>
+                    <Text style={styles.buttonText}>Sobre</Text>
+                </Pressable>
+            </View>
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
-
-
- 
-  button: {
-    backgroundColor: "blue",
-    paddingVertical: 10,
-    paddingHorizontal: 20, // Ajuste o padding horizontal para um valor menor
-    borderRadius: 5,
-    marginHorizontal: 5,
-    flex: 1, // Faz com que os botões ocupem espaço igual
-  },
-  buttonPressed: {
-    backgroundColor: "darkblue",
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center", // Centraliza o texto
-  },
-  buttonContainer: {
-    flexDirection: "row", // Alinha os botões em linha
-    justifyContent: "space-between", // Espaço igual entre os botões
-    padding: 10, // Adiciona um pouco de preenchimento ao redor
-  },
-
-  container: {
-    textAlign: 'center',
-    display: 'flex'
-  },
-  
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    welcomeText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '80%',
+    },
+    button: {
+        flex: 1,
+        height: 40,
+        backgroundColor: 'blue',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        marginHorizontal: 5,
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        lineHeight: 40,
+    },
 });
-
-export default MyComponent;

@@ -3,8 +3,8 @@ import { View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable } from "
 export default function Screen() {
     return (
         <View style={styles.container}>
-            <TextInput placeholder="Email" style={styles.input} required/>
-            <TextInput placeholder="Senha" style={styles.input} required/>
+            <TextInput placeholder="Email" style={styles.input} />
+            <TextInput placeholder="Senha" style={styles.input} secureTextEntry={true}/>
             <Pressable style={styles.button}>
                 <Text style={styles.buttonText}>Entrar</Text>
             </Pressable>
