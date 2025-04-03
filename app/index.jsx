@@ -1,8 +1,12 @@
 import { View, Text, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 
 export default function Screen() {
     return (
         <View style={styles.container}>
+            <Link href="/login" style={styles.link}>
+                <Text style={styles.linkText}>Ir para Login</Text>
+            </Link>
             <Text style={styles.title}>Olá, Tudo bem?</Text>
         </View>
     );
@@ -16,6 +20,10 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24,
-        fontWeight: 'bold'
-    }
+        fontWeight: 'bold',
+    },
+    linkText: {
+        color: 'blue',
+        textDecorationLine: 'underline',
+    },
 });
